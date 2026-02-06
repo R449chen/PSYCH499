@@ -89,20 +89,20 @@ app.get('/admin/results', async (req, res) => {
           <h2>Research Results (${results.length} total entries)</h2>
           <form class="filter">
             <input type="hidden" name="pw" value="${pw}">
-            <input type="text" name="folder" placeholder="Folder Name (e.g. BePi)" value="${folder || ''}">
+            <input type="text" name="folder" placeholder="Folder Name" value="${folder || ''}">
             <button type="submit">Filter</button>
             <a href="/admin/results?pw=${pw}">Clear</a>
           </form>
           <table>
             <thead>
               <tr>
-                <th>ID</th><th>Folder</th><th>Img</th><th>Thought</th><th>Timing (s)</th>
+                <th>Date/Time</th> <th>ID</th><th>Folder</th><th>Img</th><th>Thought</th><th>Timing (s)</th>
               </tr>
             </thead>
             <tbody>
               ${results.map(r => `
                 <tr>
-                  <td><code>${r.participantId}</code></td>
+                  <td>${r.timestamp ? new Date(r.timestamp).toLocaleString() : 'N/A'}</td> <td><code>${r.participantId}</code></td>
                   <td><b>${r.folder}</b></td>
                   <td>${r.image}</td>
                   <td>${r.text}</td>
