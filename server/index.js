@@ -7,8 +7,11 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') });
 
 const app = express();
 
-// Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allows any origin to access your API
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 
 // 1. MongoDB Connection
