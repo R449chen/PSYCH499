@@ -66,7 +66,8 @@ app.get('/admin/results', async (req, res) => {
         folder: "$entries.folder",
         start: "$entries.start_time_sec",
         end: "$entries.finish_time_sec",
-        image: "$entries.image_index"
+        image: "$entries.image_index",
+        timestamp: 1
       }
     });
 
